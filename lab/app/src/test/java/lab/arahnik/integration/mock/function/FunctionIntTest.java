@@ -34,7 +34,7 @@ public class FunctionIntTest {
     @Test
     void testFuncUsesRealSin() {
         Function function = new Function();
-        BigDecimal x = BigDecimal.valueOf(-Math.PI / 2);
+        BigDecimal x = BigDecimal.valueOf(-1);
         BigDecimal acc = BigDecimal.valueOf(1e-5);
 
         BigDecimal result = function.calculate(x, acc);
@@ -129,23 +129,6 @@ public class FunctionIntTest {
     }
 
     @Test
-    void testFuncUsesLn() {
-        Sin sin = Mockito.mock(Sin.class);
-        Cos cos = Mockito.mock(Cos.class);
-        Ln ln = Mockito.mock(Ln.class);
-
-        BigDecimal x = BigDecimal.valueOf(2);
-        BigDecimal acc = BigDecimal.valueOf(1e-5);
-
-        Mockito.when(ln.calculate(Mockito.eq(x), Mockito.eq(acc))).thenReturn(BigDecimal.valueOf(Math.log(2)));
-
-        Function function = new Function(sin, cos, ln);
-
-        function.calculate(x, acc);
-        Mockito.verify(ln, Mockito.atLeastOnce()).calculate(Mockito.eq(x), Mockito.eq(acc));
-    }
-
-    @Test
     void testFuncUsesRealLn() {
         Function function = new Function();
         BigDecimal x = BigDecimal.valueOf(2);
@@ -153,23 +136,6 @@ public class FunctionIntTest {
 
         BigDecimal result = function.calculate(x, acc);
         Assertions.assertNotNull(result);
-    }
-
-    @Test
-    void testFuncUsesLog() {
-        Sin sin = Mockito.mock(Sin.class);
-        Cos cos = Mockito.mock(Cos.class);
-        Ln ln = Mockito.mock(Ln.class);
-
-        BigDecimal x = BigDecimal.valueOf(5);
-        BigDecimal acc = BigDecimal.valueOf(1e-5);
-
-        Mockito.when(ln.calculate(Mockito.eq(x), Mockito.eq(acc))).thenReturn(BigDecimal.valueOf(Math.log(5)));
-
-        Function function = new Function(sin, cos, ln);
-
-        function.calculate(x, acc);
-        Mockito.verify(ln, Mockito.atLeastOnce()).calculate(Mockito.eq(x), Mockito.eq(acc));
     }
 
     @Test

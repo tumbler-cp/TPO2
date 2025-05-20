@@ -28,7 +28,7 @@ public class Cot implements MathModule {
         BigDecimal s = sin.calculate(x, acc);
         BigDecimal c = cos.calculate(x, acc);
 
-        if (s.abs().compareTo(acc) < 1) {
+        if (s == null || s.abs().compareTo(acc) < 1) {
             throw new ArithmeticException("Cotangent undefined for this input (sin(x) too close to zero)");
         }
 
